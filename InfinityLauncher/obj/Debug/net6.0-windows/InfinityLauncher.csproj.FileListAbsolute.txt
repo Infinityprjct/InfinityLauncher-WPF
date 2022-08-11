@@ -5,11 +5,9 @@ C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\bin\D
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\bin\Debug\net6.0-windows\ref\InfinityLauncher.dll
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\bin\Debug\net6.0-windows\InfinityLauncher.pdb
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\InfinityLauncher.csproj.AssemblyReference.cache
-C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\InfinityLauncher_MarkupCompile.cache
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\InfinityLauncher_MarkupCompile.lref
-C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\InfinityLauncher.g.resources
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\InfinityLauncher.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\InfinityLauncher.AssemblyInfoInputs.cache
@@ -19,3 +17,8 @@ C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\D
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\ref\InfinityLauncher.dll
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\InfinityLauncher.pdb
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\InfinityLauncher.genruntimeconfig.cache
+C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\View\LauncherAuth.g.cs
+C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\View\LauncherAuth.baml
+C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\bin\Debug\net6.0-windows\RestSharp.dll
+C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\InfinityLauncher.csproj.CopyComplete
+C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\bin\Debug\net6.0-windows\Newtonsoft.Json.dll

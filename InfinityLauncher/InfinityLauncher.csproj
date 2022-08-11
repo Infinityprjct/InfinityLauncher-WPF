@@ -8,13 +8,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Sources\Icons\CrossActive.png" />
-    <None Remove="Sources\Icons\CrossUnactive.png" />
+    <None Remove="View\Sources\Icons\CheckMark.png" />
+    <None Remove="View\Sources\Icons\CrossActive.png" />
+    <None Remove="View\Sources\Icons\CrossUnactive.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Sources\Icons\CrossActive.png" />
-    <Resource Include="Sources\Icons\CrossUnactive.png" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RestSharp" Version="108.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\Sources\Icons\CheckMark.png" />
+    <Resource Include="View\Sources\Icons\CrossActive.png" />
+    <Resource Include="View\Sources\Icons\CrossUnactive.png" />
   </ItemGroup>
 
 </Project>
