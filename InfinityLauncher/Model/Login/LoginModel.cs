@@ -1,5 +1,7 @@
 ﻿using InfinityLauncher.Model.Services.Authentication;
 using InfinityLauncher.Model.Services.Requests;
+using InfinityLauncher.Types;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Windows;
 
@@ -19,13 +21,20 @@ namespace InfinityLauncher.Model
             authUser = new User(null, null);
         }
 
-        public User Login(User _authUser)
+        public Account LoginAccount(User _authUser)
         {
             authUser = _authUser;
             LoginUpdated(this, new LoginEventArgs(authUser));
-            LoginRequest loginRequest = new LoginRequest();
-            loginRequest.Request(authUser.email,authUser.password);
-            return null;
+            CreateTokenRequest request = new CreateTokenRequest(authUser.email,authUser.password);
+            JObject tokens = request.Request();
+            if (tokens == null)
+            {
+                return null;
+            }    
+            string accessToken = tokens["access"].ToString();
+            string refreshToken = tokens["refresh"].ToString();
+            Account account = new Account(accessToken, refreshToken);
+            return account;
         }
 
     }

@@ -8,9 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="View\Sources\Fonts\ofont.ru_Bebas Neue.ttf" />
     <None Remove="View\Sources\Icons\CheckMark.png" />
     <None Remove="View\Sources\Icons\CrossActive.png" />
     <None Remove="View\Sources\Icons\CrossUnactive.png" />
+    <None Remove="View\Sources\Icons\TEST_SERVER.png" />
+    <None Remove="View\Sources\Images\head_back.png" />
+    <None Remove="View\Sources\Images\head_back_2.png" />
+    <None Remove="View\Sources\Images\test_bg.png" />
+    <None Remove="View\Sources\Images\test_bg2.png" />
+    <None Remove="View\Sources\Images\test_bg_blacked.png" />
+    <None Remove="View\Sources\Images\test_bg_grayed.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,9 +27,34 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="View\Sources\Fonts\ofont.ru_Bebas Neue.ttf" />
     <Resource Include="View\Sources\Icons\CheckMark.png" />
     <Resource Include="View\Sources\Icons\CrossActive.png" />
     <Resource Include="View\Sources\Icons\CrossUnactive.png" />
+    <Resource Include="View\Sources\Icons\TEST_SERVER.png" />
+    <Resource Include="View\Sources\Images\head_back.png" />
+    <Resource Include="View\Sources\Images\head_back_2.png" />
+    <Resource Include="View\Sources\Images\test_bg.png" />
+    <Resource Include="View\Sources\Images\test_bg2.png" />
+    <Resource Include="View\Sources\Images\test_bg_blacked.png" />
+    <Resource Include="View\Sources\Images\test_bg_grayed.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="View\Pages\TestPage2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="View\Pages\TestPage2.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\Accounts\" />
   </ItemGroup>
 
 </Project>

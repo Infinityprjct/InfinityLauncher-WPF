@@ -1,5 +1,7 @@
 ﻿using InfinityLauncher.Model;
 using InfinityLauncher.Model.Services.Authentication;
+using InfinityLauncher.Types;
+using InfinityLauncher.View;
 using InfinityLauncher.ViewModel.Commands;
 using InfinityLauncher.ViewModel.Login;
 using System;
@@ -17,7 +19,6 @@ namespace InfinityLauncher.ViewModel.Login
     {
         private string _email;
         private string _password { get; set; }
-        private SecureString SecurePassword;
         private readonly ILoginModel _model;
         private readonly ICommand _loginCommand; 
 
@@ -64,7 +65,13 @@ namespace InfinityLauncher.ViewModel.Login
 
         public void Login()
         {
-            _model.Login(authUser);
+            Account currentAccount = _model.LoginAccount(authUser);
+            if (currentAccount != null)
+            {
+                //LauncherMain menuView = new LauncherMain(currentAccount);
+                //menuView.Show();
+                
+            }
         }
 
         private void model_LoginUpdated(object sender,

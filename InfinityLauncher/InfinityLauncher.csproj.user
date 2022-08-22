@@ -7,7 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\LauncherMain.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\TestPage1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="View\LauncherAuth.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\LauncherMain.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\TestPage2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\TestPage1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Sources\Styles\Buttons.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

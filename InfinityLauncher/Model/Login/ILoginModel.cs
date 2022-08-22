@@ -1,4 +1,5 @@
 ﻿using InfinityLauncher.Model.Services.Authentication;
+using InfinityLauncher.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace InfinityLauncher.Model
     {
         User authUser { get; set; }
         event EventHandler<LoginEventArgs> LoginUpdated;
-        User Login(User _authUser);
+        Account LoginAccount(User _authUser);
     }
 
     public class LoginEventArgs : EventArgs

@@ -247,7 +247,7 @@
                                                 <MultiTrigger.EnterActions>
                                                     <BeginStoryboard>
                                                         <Storyboard>
-                                                            <ColorAnimation Duration="0:0:0.15"
+                                                            <ColorAnimation Duration="0:0:0.15" 
                                                                 Storyboard.TargetProperty="Background.Color" To="#FF7820E5" />
                                                         </Storyboard>
                                                     </BeginStoryboard>

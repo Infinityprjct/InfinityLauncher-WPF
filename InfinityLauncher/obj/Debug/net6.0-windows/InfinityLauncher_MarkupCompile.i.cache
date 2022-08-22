@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\App.xaml
-1-1432683479
+5-735423569
 
-18-217566616
+291729611581
 196607401476
-View\LauncherAuth.xaml;
+View\LauncherAuth.xaml;View\LauncherMain.xaml;View\Pages\TestPage1.xaml;View\Pages\TestPage2.xaml;View\Sources\Styles\Buttons.xaml;
 
-False
+True
 
