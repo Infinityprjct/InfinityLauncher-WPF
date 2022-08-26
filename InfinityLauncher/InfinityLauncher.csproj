@@ -18,6 +18,7 @@
     <None Remove="View\Sources\Images\test_bg.png" />
     <None Remove="View\Sources\Images\test_bg2.png" />
     <None Remove="View\Sources\Images\test_bg_blacked.png" />
+    <None Remove="View\Sources\Images\test_bg_blacked_2.png" />
     <None Remove="View\Sources\Images\test_bg_grayed.png" />
   </ItemGroup>
 
@@ -37,20 +38,8 @@
     <Resource Include="View\Sources\Images\test_bg.png" />
     <Resource Include="View\Sources\Images\test_bg2.png" />
     <Resource Include="View\Sources\Images\test_bg_blacked.png" />
+    <Resource Include="View\Sources\Images\test_bg_blacked_2.png" />
     <Resource Include="View\Sources\Images\test_bg_grayed.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="View\Pages\TestPage2.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="View\Pages\TestPage2.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 
   <ItemGroup>

@@ -24,8 +24,6 @@ C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\D
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\View\LauncherMain.g.cs
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\View\LauncherMain.baml
-C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\View\Pages\TestPage1.g.cs
-C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\View\Pages\TestPage2.g.cs
-C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\View\Pages\TestPage1.baml
-C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\View\Pages\TestPage2.baml
 C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\View\Sources\Styles\Buttons.baml
+C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\View\Pages\ExtraAnarchyPage.g.cs
+C:\Users\green\Desktop\Infinity\Launcher\InfinityLauncher\InfinityLauncher\obj\Debug\net6.0-windows\View\Pages\ExtraAnarchyPage.baml

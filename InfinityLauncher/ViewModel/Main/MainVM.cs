@@ -28,11 +28,8 @@ namespace InfinityLauncher.ViewModel.Login
         private readonly IMainModel _model;
         private readonly ICommand _changeServerCommand;
 
-        public ObservableCollection<Server>
-            Servers
+        public ObservableCollection<Server> Servers
         { get { return _model.servers; } }
-
-        private ObservableCollection<Button> _serversButtons;
 
         public string email
         {
@@ -86,20 +83,15 @@ namespace InfinityLauncher.ViewModel.Login
         {
             get 
             {
-                if (currentServer != null)
+                if (currentServer == null)
                 {
-                    return null;
+                    return new ExtraAnarchyPage();
                 }
                 else
                 {
-                    return new TestPage1();
+                    return currentServer.serverPage;
                 }
             }
-        }
-
-        public ObservableCollection<Button> ServersButtons
-        {
-            get { return _serversButtons; }
         }
 
         public ICommand ChangeServerCommand
@@ -107,22 +99,12 @@ namespace InfinityLauncher.ViewModel.Login
             get { return _changeServerCommand; }
         }
 
-        //public MainVM(IMainModel mainModel)
-        //{
-        //    MessageBox.Show(mainModel.currentAccount.nickname);
-        //    _model = mainModel;
-        //    _model.MainUpdated += model_mainUpdated;
-        //    nickname = mainModel.currentAccount.nickname;
-        //}
         public MainVM(IMainModel mainModel)
         {
-            //MessageBox.Show(mainModel.currentAccount.nickname);
             _model = mainModel;
             _model.AccountUpdated += model_accountUpdated;
             _model.ServerUpdated += model_serverUpdated;
             _changeServerCommand = new ChangeServerCommand(this);
-            //nickname = mainModel.currentAccount.nickname;
-            _serversButtons = new ObservableCollection<Button>();
             InitializeServers();
 
 
@@ -136,30 +118,18 @@ namespace InfinityLauncher.ViewModel.Login
                                           ServerEventArgs e)
         {
             MessageBox.Show("UPDATED SERVER");
-            MessageBox.Show(e.currentServer.name.ToString());
-            MessageBox.Show(Servers.Count().ToString());
             
         }
 
         public void InitializeServers()
         {
-
             _model.InitializeServers();
-
-            foreach (Server server in Servers)
-            {
-                Button _srvbtn = new Button();
-                _srvbtn.Command = ChangeServerCommand;
-                _srvbtn.CommandParameter = server.name;
-
-                ServersButtons.Add(_srvbtn);
-            }
         }
 
         public void СhangeCurrentServer(string serverName)
         {
             currentServer = _model.GetServer(serverName);
-            MessageBox.Show(currentServer.name);
+            MessageBox.Show(currentServer.Name);
         }
 
     }

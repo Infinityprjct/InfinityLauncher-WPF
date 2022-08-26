@@ -36,23 +36,14 @@ namespace InfinityLauncher.Model.Main
 
         public void InitializeServers()
         {
-            GetServersRequest serversRequest = new GetServersRequest();
-            JObject serversList = serversRequest.Request();
+            Server ExtraAnarchyServer = new Server("ExtraAnarchy","127.0.0.1", null, new ExtraAnarchyPage());
+            servers.Add(ExtraAnarchyServer);
 
-            foreach (var server in serversList)
-            {
-                JObject currServer = (JObject)server.Value;                
-
-                Server _srv = new Server(currServer["name"].ToString(), currServer["ip"].ToString(), currServer["launcher_icon_url"].ToString(),
-                                         currServer["launcher_page_url"].ToString());
-                servers.Add(_srv);
-                ServerUpdated(this, new ServerEventArgs(_srv));
-            }
         }
         public Server GetServer(string serverName)
         {
             return servers.FirstOrDefault(
-                server => server.name == serverName);
+                server => server.Name == serverName);
         }
 
     }

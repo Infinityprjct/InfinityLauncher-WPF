@@ -10,7 +10,7 @@
     <Compile Update="View\LauncherMain.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\Pages\TestPage1.xaml.cs">
+    <Compile Update="View\Pages\ExtraAnarchyPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -21,10 +21,7 @@
     <Page Update="View\LauncherMain.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\Pages\TestPage2.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\Pages\TestPage1.xaml">
+    <Page Update="View\Pages\ExtraAnarchyPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Sources\Styles\Buttons.xaml">

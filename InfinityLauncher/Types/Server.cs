@@ -10,18 +10,18 @@ namespace InfinityLauncher.Types
     public class Server
     {
         public int id;
-        public string name;
+        public string Name;
         public string ip;
         public string iconURL;
-        public string xamlPageURL;
+        public Page serverPage;
         //TODO
 
-        public Server(string _name,string _ip, string _iconURL, string _xamlPageURL)
+        public Server(string _name,string _ip, string _iconURL, Page _serverPage)
         {
-            name = _name;
+            Name = _name;
             ip = _ip;
             iconURL = _iconURL;
-            xamlPageURL = _xamlPageURL;
+            serverPage = _serverPage;
         }
     }
 }
