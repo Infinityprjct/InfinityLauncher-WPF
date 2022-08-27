@@ -15,6 +15,7 @@ namespace InfinityLauncher.Model.Main
     public class MainModel : IMainModel
     {
         public Account currentAccount { get; set; }
+        public Account account { get; set; }
         public ObservableCollection<Server> servers { get; set; }
         public event EventHandler<AccountEventArgs> AccountUpdated;
         public event EventHandler<ServerEventArgs> ServerUpdated;
