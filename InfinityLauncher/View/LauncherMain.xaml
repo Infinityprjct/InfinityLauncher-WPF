@@ -67,17 +67,16 @@
                 <RowDefinition Height="55"/>
                 <RowDefinition Height="605"/>
             </Grid.RowDefinitions>
-            <Frame Grid.ColumnSpan="20" Grid.RowSpan="20" NavigationUIVisibility="Hidden" Content="{Binding currentPage}"/>
+            <Frame Grid.ColumnSpan="20" Grid.RowSpan="20" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
             <!-- Top toolbar -->
             <Grid Grid.Row="0">
                 <!-- Background #7F000000-->
                 <Border Height="55" Width="1080" Background="Transparent" MouseDown="Main_DragAndMove">
                 </Border>
-                <Button Width="100" HorizontalAlignment="Left" Background="#FF848484">кАБИнет
-                </Button>
+                <Button Width="100" HorizontalAlignment="Left" Background="#FF848484" Command="{Binding ShowAccountPageCommand}"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Width="60" Template="{StaticResource ResourceKey=ServerButton}" Margin="0,0,0,0">
+                    <Button Width="60" Template="{StaticResource ResourceKey=ServerButton}" Margin="0,0,0,0" Command="{Binding ChangeServerCommand}" CommandParameter="ExtraAnarchy" >
                         <Button.Resources>
                             <ImageSource x:Key="Img">/View/Sources/Icons/TEST_SERVER.png</ImageSource>
                         </Button.Resources>

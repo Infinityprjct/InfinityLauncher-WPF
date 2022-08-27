@@ -11,11 +11,9 @@ namespace InfinityLauncher.ViewModel.Main
 {
     public interface IMainVM : INotifyPropertyChanged
     {
-        string email { get; set; }
-        string nickname { get; set; }
-        int balance { get; set; }
-        string UUID { get; set; }
-        Server currentServer { get; set; }
+        Account Account { get; }
+        Page CurrentPage { get; set; }
+        Server СurrentServer { get; set; }
 
         void СhangeCurrentServer(string serverName);
     }

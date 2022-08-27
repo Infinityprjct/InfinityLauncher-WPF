@@ -22,7 +22,6 @@ namespace InfinityLauncher.ViewModel.Main.Commands
         private void vm_PropertyChanged(object sender,
             PropertyChangedEventArgs e)
         {
-            MessageBox.Show(e.PropertyName.ToString());
             CanExecuteChanged(this, new EventArgs());
         }
 
@@ -35,7 +34,6 @@ namespace InfinityLauncher.ViewModel.Main.Commands
 
         public void Execute(object parameter)
         {
-            MessageBox.Show("Server changing with parameter " + parameter.ToString());
             _vm.СhangeCurrentServer(parameter.ToString());
         }
     }

@@ -10,6 +10,8 @@ namespace InfinityLauncher.Model.Main
 {
     public interface IMainModel
     {
+        Account account { get; set; }
+        Server currentServer { get; set; }
         ObservableCollection<Server> servers { get; set; }
         Server GetServer(string serverName);
         void InitializeServers();

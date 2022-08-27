@@ -1,4 +1,5 @@
-﻿using InfinityLauncher.Model.Main;
+﻿using GalaSoft.MvvmLight.Command;
+using InfinityLauncher.Model.Main;
 using InfinityLauncher.Model.Services.Requests;
 using InfinityLauncher.Types;
 using InfinityLauncher.View.Pages;
@@ -19,84 +20,50 @@ namespace InfinityLauncher.ViewModel.Login
 {
     public class MainVM : MainNotifier,IMainVM
     {
-        private string _email;
-        private string _nickname;
-        private int _balance;
-        private string _uuid;
-        private Server _currentServer;
-        private readonly Page _currentPage;
+        private Page _currentPage = new ExtraAnarchyPage();
         private readonly IMainModel _model;
         private readonly ICommand _changeServerCommand;
+        private readonly ICommand _showAccountPageCommand;
 
+        // ViewModel - Model variables  
         public ObservableCollection<Server> Servers
         { get { return _model.servers; } }
 
-        public string email
+        public Account Account { get { return _model.account; } }
+        public Server СurrentServer
         {
-            get { return _email; }
-            set 
-            {
-                _email = value;
-                NotifyPropertyChanged("email");
-            }
-
-        }
-        public string nickname
-        {
-            get { return _nickname; }
+            get { return _model.currentServer;  }
             set 
             { 
-                _nickname = value;
-                NotifyPropertyChanged("nickname");
-            }
-        }
-        public int balance
-        {
-            get { return _balance; }
-            set 
-            { 
-                _balance = value;
-                NotifyPropertyChanged("balance");
-            }
-        }
-        public string UUID
-        {
-            get { return _uuid; }
-            set 
-            { 
-                _uuid = value;
-                NotifyPropertyChanged("UUID");
-            }
-        }
-
-        public Server currentServer
-        {
-            get { return _currentServer;  }
-            set 
-            { 
-                _currentServer = value;
+                _model.currentServer = value;
                 NotifyPropertyChanged("currentServer");
             }
         }
 
-        public Page currentPage
+        // ViewModel variables
+        public Page CurrentPage
         {
-            get 
+            get
             {
-                if (currentServer == null)
-                {
-                    return new ExtraAnarchyPage();
-                }
-                else
-                {
-                    return currentServer.serverPage;
-                }
+                return _currentPage;
+            }
+            set
+            {
+                _currentPage = value;
+                NotifyPropertyChanged("CurrentPage");
             }
         }
-
         public ICommand ChangeServerCommand
         {
             get { return _changeServerCommand; }
+        }
+        public ICommand ShowAccountPageCommand
+        {
+            get 
+            {
+                //return new RelayCommand(() => CurrentPage = AccountPage); 
+                 return _showAccountPageCommand; 
+            }
         }
 
         public MainVM(IMainModel mainModel)
@@ -105,10 +72,15 @@ namespace InfinityLauncher.ViewModel.Login
             _model.AccountUpdated += model_accountUpdated;
             _model.ServerUpdated += model_serverUpdated;
             _changeServerCommand = new ChangeServerCommand(this);
+            _showAccountPageCommand = new ShowAccountPageCommand(this);
+
             InitializeServers();
 
 
         }
+        /// <summary>
+        /// Updating event voids from model. 
+        /// </summary>
         private void model_accountUpdated(object sender,
                                           AccountEventArgs e)
         {
@@ -126,10 +98,18 @@ namespace InfinityLauncher.ViewModel.Login
             _model.InitializeServers();
         }
 
+        /// <summary>
+        /// Changing current server and page also
+        /// </summary>
+        /// <param name="serverName">Name of server which we want to find</param>
+        /// <returns>Server Class</returns>
+        /// <see cref="CurrentPage"/>
+        /// <see cref="СurrentServer"/>
+        /// <see cref="Server"/>
         public void СhangeCurrentServer(string serverName)
         {
-            currentServer = _model.GetServer(serverName);
-            MessageBox.Show(currentServer.Name);
+            СurrentServer = _model.GetServer(serverName);
+            CurrentPage = СurrentServer.serverPage;
         }
 
     }
