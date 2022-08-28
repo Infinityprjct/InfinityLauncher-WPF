@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace InfinityLauncher.ViewModel.Main.Commands
@@ -13,6 +14,7 @@ namespace InfinityLauncher.ViewModel.Main.Commands
     internal class ShowAccountPageCommand : ICommand
     {
         private IMainVM _vm;
+        private Page accountPage = new AccountPage();
 
         public ShowAccountPageCommand(IMainVM viewModel)
         {
@@ -23,22 +25,11 @@ namespace InfinityLauncher.ViewModel.Main.Commands
         private void vm_PropertyChanged(object sender,
             PropertyChangedEventArgs e)
         {
-            MessageBox.Show(e.PropertyName.ToString());
             CanExecuteChanged(this, new EventArgs());
         }
 
         public bool CanExecute(object parameter)
         {
-            /* UNCOMMENT ON RELEASE
-            if (_vm.Account != null)
-            {
-                return true;
-            }
-            else 
-            { 
-                return false; 
-            }
-            */
             return true;
         }
 
@@ -46,8 +37,7 @@ namespace InfinityLauncher.ViewModel.Main.Commands
 
         public void Execute(object parameter)
         {
-            _vm.CurrentPage = new AccountPage();
-            MessageBox.Show(_vm.CurrentPage.ToString());
+            _vm.CurrentPage = accountPage;
         }
     }
 }

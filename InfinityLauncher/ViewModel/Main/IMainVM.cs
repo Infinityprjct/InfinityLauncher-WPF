@@ -13,7 +13,7 @@ namespace InfinityLauncher.ViewModel.Main
     {
         Account Account { get; }
         Page CurrentPage { get; set; }
-        Server currentServer { get; set; }
+        Server СurrentServer { get; set; }
 
         void СhangeCurrentServer(string serverName);
     }

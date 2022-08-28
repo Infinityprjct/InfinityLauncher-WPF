@@ -13,6 +13,8 @@
     <None Remove="View\Sources\Icons\CrossActive.png" />
     <None Remove="View\Sources\Icons\CrossUnactive.png" />
     <None Remove="View\Sources\Icons\TEST_SERVER.png" />
+    <None Remove="View\Sources\Icons\UserActive.png" />
+    <None Remove="View\Sources\Icons\UserUnactive.png" />
     <None Remove="View\Sources\Images\head_back.png" />
     <None Remove="View\Sources\Images\head_back_2.png" />
     <None Remove="View\Sources\Images\test_bg.png" />
@@ -34,6 +36,8 @@
     <Resource Include="View\Sources\Icons\CrossActive.png" />
     <Resource Include="View\Sources\Icons\CrossUnactive.png" />
     <Resource Include="View\Sources\Icons\TEST_SERVER.png" />
+    <Resource Include="View\Sources\Icons\UserActive.png" />
+    <Resource Include="View\Sources\Icons\UserUnactive.png" />
     <Resource Include="View\Sources\Images\head_back.png" />
     <Resource Include="View\Sources\Images\head_back_2.png" />
     <Resource Include="View\Sources\Images\test_bg.png" />

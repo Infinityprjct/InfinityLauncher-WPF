@@ -16,6 +16,8 @@ namespace InfinityLauncher.Types
         public Page serverPage;
         //TODO
 
+        
+
         public Server(string _name,string _ip, string _iconURL, Page _serverPage)
         {
             Name = _name;

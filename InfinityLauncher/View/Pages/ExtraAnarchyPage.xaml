@@ -123,7 +123,7 @@
                     <TextBlock FontFamily="Bebas Neue Cyrillic" FontSize="72" Text="ANARCHY EXTRA" Foreground="White"></TextBlock>
                     <StackPanel Orientation="Vertical">
                         <Button Template="{DynamicResource PlayButton}" HorizontalAlignment="Left" FontFamily="Bebas Neue Cyrillic" FontStyle="Normal" Click="Button_Click" 
-                                Content="⏵ИГРАТЬ" FontSize="24" Foreground="White" Margin="0,0,10,10"/>
+                                Content="⏵ИГРАТЬ" FontSize="24" Foreground="White" Margin="0,0,10,10" Command="{Binding LaunchGameCommand}"/>
                         <Button Template="{DynamicResource ServerSettingsButton}" HorizontalAlignment="Left" FontFamily="Bebas Neue Cyrillic" 
                                 Content="Настройки" Foreground="White" FontSize="14"></Button>
                     </StackPanel>

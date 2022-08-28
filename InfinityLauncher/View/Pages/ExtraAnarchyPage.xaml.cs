@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InfinityLauncher.Model.Main;
+using InfinityLauncher.ViewModel.Login;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,10 @@ namespace InfinityLauncher.View.Pages
     /// </summary>
     public partial class ExtraAnarchyPage : Page
     {
-        public ExtraAnarchyPage()
+        public ExtraAnarchyPage(MainVM _vm)
         {
             InitializeComponent();
+            DataContext = _vm;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

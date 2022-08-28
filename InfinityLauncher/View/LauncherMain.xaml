@@ -8,7 +8,19 @@
         mc:Ignorable="d"
         Title="LauncherMain" Height="660" Width="1080" Background="Red" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Window.Resources>
-        
+        <ControlTemplate x:Key="AccountButton" TargetType="Button">
+            <Grid x:Name="Btn" Height="55">
+                <Border>
+                    <Image x:Name="AccImg" Source="/View/Sources/Icons/UserUnactive.png"/>
+                </Border>
+                
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="AccImg" Property="Source" Value="/View/Sources/Icons/UserActive.png"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
         <ControlTemplate x:Key="ServerButton" TargetType="Button">
             <Grid Name="Btn" Height="55">
                 <Border>
@@ -73,15 +85,30 @@
                 <!-- Background #7F000000-->
                 <Border Height="55" Width="1080" Background="Transparent" MouseDown="Main_DragAndMove">
                 </Border>
-                <Button Width="100" HorizontalAlignment="Left" Background="#FF848484" Command="{Binding ShowAccountPage}" Content="СУКААА ЛОАРИЫРАПЫВА&#xD;&#xA;ЫВАРЫВАОЛЫВАО&#xD;&#xA;"/>
+                <Button Template="{StaticResource AccountButton}" Width="100" HorizontalAlignment="Left" Background="Transparent" Command="{Binding ShowAccountPageCommand}">
+
+                </Button>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Width="60" Template="{StaticResource ResourceKey=ServerButton}" Margin="0,0,0,0" Command="{Binding ChangeServerCommand}" CommandParameter="ExtraAnarchy">
+                    <Button Width="60" Template="{StaticResource ResourceKey=ServerButton}" Margin="0,0,0,0" Command="{Binding ChangeServerCommand}" CommandParameter="ExtraAnarchy" >
                         <Button.Resources>
                             <ImageSource x:Key="Img">/View/Sources/Icons/TEST_SERVER.png</ImageSource>
                         </Button.Resources>
                     </Button>
                 </StackPanel>
+                <!--
+                <ItemsControl x:Name="ServersButtons" ItemsSource="{Binding Path=ServersButtons}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Width="60" CommandParameter="{Binding Path=Name}">
+                                <Button.Resources>
+                                    <ImageSource x:Key="Img">/View/Sources/Icons/TEST_SERVER.png</ImageSource>
+                                </Button.Resources>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                -->
 
             </Grid>
             <Grid Grid.Row="1">

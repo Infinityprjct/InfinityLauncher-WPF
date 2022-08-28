@@ -114,7 +114,6 @@
                                     Value="True">
                                     <Setter Property="Source" Value="/View/Sources/Icons/CrossActive.png"/>
                                 </DataTrigger>
-
                             </Style.Triggers>
                         </Style>
                     </Image.Style>

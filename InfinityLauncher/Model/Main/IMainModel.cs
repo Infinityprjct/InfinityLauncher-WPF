@@ -1,4 +1,5 @@
 ﻿using InfinityLauncher.Types;
+using InfinityLauncher.ViewModel.Login;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,9 +12,10 @@ namespace InfinityLauncher.Model.Main
     public interface IMainModel
     {
         Account account { get; set; }
+        Server currentServer { get; set; }
         ObservableCollection<Server> servers { get; set; }
         Server GetServer(string serverName);
-        void InitializeServers();
+        void InitializeServers(MainVM _vm);
         event EventHandler<AccountEventArgs> AccountUpdated;
         event EventHandler<ServerEventArgs> ServerUpdated;
         
