@@ -5,46 +5,101 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InfinityLauncher.View.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="1080"
       Title="AccountPage">
 
+    <Page.Resources>
+        <ControlTemplate x:Key="UpdateSkinButton" TargetType="{x:Type ButtonBase}">
+
+        <!--Background #7d49d3-->
+        <Border x:Name="Border" Background="#FFBE6DBF" BorderBrush="Red" 
+                BorderThickness="0" SnapsToDevicePixels="true" Width="250" Height="60" CornerRadius="23">
+            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Button.IsDefaulted" Value="true">
+                <Setter Property="BorderBrush" TargetName="Border" Value="White"/>
+            </Trigger>
+            <!-- Mouse Over animation -->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Background.Color" To="#6236aa" />
+
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.EnterActions>
+                <MultiTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Background.Color" To="#7d49d3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.ExitActions>
+            </MultiTrigger>
+            <!-- Button pressed animation -->
+            <EventTrigger RoutedEvent="PreviewMouseDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Background.Color" To="#522c8f" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="PreviewMouseUp">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Background.Color" To="#7d49d3" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    </Page.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/Sources/Images/TestBG2.png"/>
+        </Grid.Background>
+        <!--
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#a862ff"/>
                 <GradientStop Color="#FF961E7B" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
+                -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="350"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
-        <Grid Grid.Column="0">
-            <Border Background="White" Margin="20,20,20,20" CornerRadius="10">
+        
+        <Grid Grid.Column="0" Margin="0,50,0,0">
+            <Border Background="Black" Margin="20,20,20,20" CornerRadius="10" BorderBrush="Gray" BorderThickness="2">
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="300"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0" Height="300" Margin="0,0,0,10"/>
-                    <TextBlock Grid.Row="1" Text="Обновить скин" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <StackPanel Margin="10">
+                        <Image Grid.Row="0" Height="150" Margin="0,0,0,10" Source="/View/Sources/Images/Skin.png"/>
+                        <TextBlock Margin="10"  HorizontalAlignment="Center"  Text="FeedokTV" Foreground="White" FontSize="22"></TextBlock>
+                        <TextBlock HorizontalAlignment="Center"  Text="FeedokTV" Foreground="White" FontSize="22"></TextBlock>
+                        <TextBlock HorizontalAlignment="Center"  Text="FeedokTV" Foreground="White" FontSize="22"></TextBlock>
+                        <Button Grid.Row="1" VerticalAlignment="Bottom" Margin="0,0,0,20" Template="{StaticResource UpdateSkinButton}" Foreground="White" FontSize="15" Content="Обновить скин" FontFamily="Bebas Neue Cyrillic" FontStyle="Normal"/>
+                    </StackPanel>
                 </Grid>
             </Border>
         </Grid>
-        
-        <Grid Grid.Column="1">
-            <StackPanel>
-                <Border Background="White" Margin="10,10,10,10">
-                    <StackPanel>
-                        <TextBlock></TextBlock>
-                    </StackPanel>
-                </Border>
-                <Border Background="White" Margin="10,10,10,10">
-                    <StackPanel>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
+
+        <Grid Grid.Column="1" Margin="0,50,0,0">
+            <Border Background="Black" Margin="20,20,20,20" CornerRadius="10" BorderBrush="Gray" BorderThickness="2">
+                <Grid>
+                    <TextBlock Text="ЗДЕСЬ ЧЁ ТО БУДЕТ" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
         </Grid>
     </Grid>
 </Page>

@@ -5,12 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InfinityLauncher.View"
       mc:Ignorable="d" 
-      d:DesignHeight="660" d:DesignWidth="1080"
+      d:DesignHeight="600" d:DesignWidth="1080"
       Title="TestPage1" Background="Black" Margin="0,0,0,10">
     <Page.Resources>
         <ControlTemplate x:Key="PlayButton" TargetType="{x:Type ButtonBase}">
 
-            <Border x:Name="Border" Background="#7d49d3" BorderBrush="Red" 
+            <!--Background #7d49d3-->
+            <Border x:Name="Border" Background="#FFBE6DBF" BorderBrush="Red" 
                 BorderThickness="0" SnapsToDevicePixels="true" Width="300" Height="60" CornerRadius="23">
                 <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
@@ -101,8 +102,17 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </Page.Resources>
-    <Grid>
-        <Image Stretch="Fill" Source="/View/Sources/Images/test_bg_blacked_2.png" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-27">
+    <Grid Margin="0,0,0,-12">
+        <!--
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF37C6EC" Offset="0"/>
+                <GradientStop Color="#FF4E069A" Offset="0.8"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        -->
+        
+        <Image Stretch="Fill" Source="/View/Sources/Images/TestBG.png" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-27">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -112,14 +122,14 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-
+        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
+                <StackPanel VerticalAlignment="Center" Margin="20,0,0,0">
                     <TextBlock FontFamily="Bebas Neue Cyrillic" FontSize="72" Text="ANARCHY EXTRA" Foreground="White"></TextBlock>
                     <StackPanel Orientation="Vertical">
                         <Button Template="{DynamicResource PlayButton}" HorizontalAlignment="Left" FontFamily="Bebas Neue Cyrillic" FontStyle="Normal" Click="Button_Click" 
@@ -130,7 +140,7 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
-                <Border Background="#72000000" BorderBrush="Gray" BorderThickness="1" CornerRadius="3" VerticalAlignment="Center" Margin="10,0,10,0">
+                <Border Background="#72000000" BorderBrush="Gray" BorderThickness="1" CornerRadius="3" VerticalAlignment="Center" Margin="10,0,20,0">
                     <StackPanel>
                         <TextBlock TextWrapping="Wrap" Foreground="#FFE9E9E9" FontFamily="Arial Black" Text="Lorem Ipsum - это текст-&quot;рыба&quot;" FontWeight="Bold" Margin="10,10,0,0" FontSize="16"/>
                         <TextBlock TextWrapping="Wrap" Foreground="#FFBBBBBB" FontFamily="Arial" Text="часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной &quot;рыбой&quot; для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum." FontWeight="Bold" Margin="10,10,0,10"/>

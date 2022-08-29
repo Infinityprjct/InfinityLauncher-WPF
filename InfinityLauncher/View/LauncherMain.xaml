@@ -6,14 +6,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InfinityLauncher.View"
         mc:Ignorable="d"
-        Title="LauncherMain" Height="660" Width="1080" Background="Red" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        Title="LauncherMain" Height="660" Width="1080" Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Window.Resources>
         <ControlTemplate x:Key="AccountButton" TargetType="Button">
-            <Grid x:Name="Btn" Height="55">
+            <Grid x:Name="Btn"  Height="50" Width="50">
                 <Border>
                     <Image x:Name="AccImg" Source="/View/Sources/Icons/UserUnactive.png"/>
                 </Border>
-                
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="true">
@@ -22,11 +21,11 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <ControlTemplate x:Key="ServerButton" TargetType="Button">
-            <Grid Name="Btn" Height="55">
-                <Border>
+            <Grid Name="Btn" Height="50" Width="50">
+                <Border CornerRadius="20" Panel.ZIndex="1">
                     <Image Source="{DynamicResource ResourceKey=Img}"/>
                 </Border>
-                <Border x:Name="MouseOverBorder" Background="Gray">
+                <Border x:Name="MouseOverBorder" Background="Gray" CornerRadius="30">
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Opacity" Value="0"/>
@@ -38,7 +37,7 @@
                         </Style>
                     </Border.Style>
                 </Border>
-                <Border x:Name="IsSelectedBorder" Background="LightGray">
+                <Border x:Name="IsSelectedBorder" Background="#FFBE6DBF" CornerRadius="30">
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Opacity" Value="0"/>
@@ -47,7 +46,7 @@
                                     Mode=FindAncestor,
                                     AncestorType={x:Type Button}}, 
                                     Path=IsFocused}" Value="True">
-                                    <Setter Property="Opacity" Value="0.1"/>
+                                    <Setter Property="Opacity" Value="1"/>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -77,18 +76,17 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="55"/>
-                <RowDefinition Height="605"/>
+                <RowDefinition Height="600"/>
             </Grid.RowDefinitions>
             <Frame Grid.ColumnSpan="20" Grid.RowSpan="20" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
             <!-- Top toolbar -->
             <Grid Grid.Row="0">
                 <!-- Background #7F000000-->
-                <Border Height="55" Width="1080" Background="Transparent" MouseDown="Main_DragAndMove">
+                <!-- Background #66000000-->
+                <Border Height="55" Width="1080" Background="#66000000" MouseDown="Main_DragAndMove">
                 </Border>
                 <Button Template="{StaticResource AccountButton}" Width="100" HorizontalAlignment="Left" Background="Transparent" Command="{Binding ShowAccountPageCommand}">
-
                 </Button>
-
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Width="60" Template="{StaticResource ResourceKey=ServerButton}" Margin="0,0,0,0" Command="{Binding ChangeServerCommand}" CommandParameter="ExtraAnarchy" >
                         <Button.Resources>
@@ -112,7 +110,6 @@
 
             </Grid>
             <Grid Grid.Row="1">
-
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="299*"/>
                     <ColumnDefinition Width="61*"/>

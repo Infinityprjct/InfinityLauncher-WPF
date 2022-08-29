@@ -17,6 +17,8 @@
     <None Remove="View\Sources\Icons\UserUnactive.png" />
     <None Remove="View\Sources\Images\head_back.png" />
     <None Remove="View\Sources\Images\head_back_2.png" />
+    <None Remove="View\Sources\Images\TestBG.png" />
+    <None Remove="View\Sources\Images\TestBG2.png" />
     <None Remove="View\Sources\Images\test_bg.png" />
     <None Remove="View\Sources\Images\test_bg2.png" />
     <None Remove="View\Sources\Images\test_bg_blacked.png" />
@@ -40,6 +42,8 @@
     <Resource Include="View\Sources\Icons\UserUnactive.png" />
     <Resource Include="View\Sources\Images\head_back.png" />
     <Resource Include="View\Sources\Images\head_back_2.png" />
+    <Resource Include="View\Sources\Images\TestBG.png" />
+    <Resource Include="View\Sources\Images\TestBG2.png" />
     <Resource Include="View\Sources\Images\test_bg.png" />
     <Resource Include="View\Sources\Images\test_bg2.png" />
     <Resource Include="View\Sources\Images\test_bg_blacked.png" />
