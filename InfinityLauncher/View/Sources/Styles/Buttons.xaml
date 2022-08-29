@@ -3,4 +3,106 @@
                     xmlns:local="clr-namespace:InfinityLauncher.View">
     
 
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ControlTemplate x:Key="VioletButton" TargetType="{x:Type Button}">
+
+        <!--Background #7d49d3-->
+        <Border x:Name="Border" Background="#FFBE6DBF" BorderBrush="Red" 
+                BorderThickness="0" SnapsToDevicePixels="true" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" CornerRadius="{TemplateBinding Border.CornerRadius}">
+            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Button.IsDefaulted" Value="true">
+                <Setter Property="BorderBrush" TargetName="Border" Value="White"/>
+            </Trigger>
+            <!-- Mouse Over animation -->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Background.Color" To="#6236aa" />
+
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.EnterActions>
+                <MultiTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Background.Color" To="#7d49d3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.ExitActions>
+            </MultiTrigger>
+            <!-- Button pressed animation -->
+            <EventTrigger RoutedEvent="PreviewMouseDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Background.Color" To="#522c8f" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="PreviewMouseUp">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Background.Color" To="#7d49d3" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="WhiteButton" TargetType="{x:Type Button}">
+
+        <Border x:Name="Border" Background="Transparent" BorderBrush="White" TextBlock.Foreground="White"
+                BorderThickness="3" SnapsToDevicePixels="true" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" CornerRadius="{TemplateBinding Border.CornerRadius}">
+            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Button.IsDefaulted" Value="true">
+                <Setter Property="BorderBrush" TargetName="Border" Value="White"/>
+            </Trigger>
+            <!-- Mouse Over animation -->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Background.Color" To="White" />
+                            <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="Black" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.EnterActions>
+                <MultiTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Background.Color" To="Transparent" />
+                            <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="White" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.ExitActions>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 </ResourceDictionary>

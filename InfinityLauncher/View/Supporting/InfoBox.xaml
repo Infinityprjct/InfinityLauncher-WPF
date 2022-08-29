@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:InfinityLauncher.View.Supporting"
         mc:Ignorable="d"
         Title="InfoBox" Height="170" Width="370" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary Source="/View/Sources/Styles/Buttons.xaml"/>
+    </Window.Resources>
     <Grid>
         <!--
         <Grid.RowDefinitions>
@@ -19,12 +22,12 @@
         </Border>
         <TextBlock x:Name="Message" Margin="10,0,10,0" VerticalAlignment="Center" FontFamily="Arial" FontWeight="Normal" FontSize="14" Height="98"><Run Language="ru-ru" Text="Сообщение"/></TextBlock>
         <Border VerticalAlignment="Bottom" Grid.Row="2" BorderBrush="LightGray" BorderThickness="0,1,0,0">
-            <Button HorizontalAlignment="Right" Height="20" Width="60" Margin="5,10,5,5" Content="Ок" Foreground="White" Background="#FFD066F0" BorderThickness="0" Click="CloseButton_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
+            <Button Template="{StaticResource VioletButton}" HorizontalAlignment="Right" Height="20" Width="60" Margin="5,10,5,5" Content="Ок" Foreground="White" Background="#FFD066F0" BorderThickness="0" Click="CloseButton_Click">
+                <Button.Style>
+                    <Style>
+                        <Setter Property="Border.CornerRadius" Value="5"/>
                     </Style>
-                </Button.Resources>
+                </Button.Style>
             </Button>
         </Border>
     </Grid>
