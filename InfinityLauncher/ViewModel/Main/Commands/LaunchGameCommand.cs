@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InfinityLauncher.View.Supporting;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -36,7 +37,8 @@ namespace InfinityLauncher.ViewModel.Main.Commands
 
         public void Execute(object parameter)
         {
-            MessageBox.Show("sTArtting minecraft");
+            InfoBox infoBox = new InfoBox("Информация","Майнкрафт запущен");
+            infoBox.Show();
             String libs = "C:\\Users\\Feedok\\Desktop\\Infinity\\Authlib Patching\\clientMC\\client\\1.16.5\\libraries";
             String assets = "C:\\Users\\Feedok\\Desktop\\Infinity\\Authlib Patching\\clientMC\\client\\1.16.5\\assets";
             ProcessStartInfo minecraft = new ProcessStartInfo
@@ -46,7 +48,7 @@ namespace InfinityLauncher.ViewModel.Main.Commands
                 Arguments = @"-Djava.library.path=C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/libraries/natives -cp ""C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/libraries/*"" net.minecraft.client.main.Main --username Steve --version 1.16.5 --gameDir C:\Users\Feedok\Desktop\Infinity\Authlib\clientMC\client\T --assetsDir C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/assets --assetIndex 1.16 --uuid f82fde1a6cfc497fa6df0c67d66ca002 --accessToken 2ca41fec1f154863936c35d27ac3b362 --userType mojang"
                 //Arguments = @"java -Djava.library.path=C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/libraries/natives -cp ""C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/libraries/*"" net.minecraft.client.main.Main --username %username% --version 1.16.5 --gameDir . --assetsDir C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/assets --assetIndex 1.16 --uuid %uuid% --accessToken %accessToken% --userType mojang"
             };
-            Process.Start(minecraft);
+            //Process.Start(minecraft);
         }
     }
 }

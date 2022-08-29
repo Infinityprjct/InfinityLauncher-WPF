@@ -1,0 +1,31 @@
+﻿<Window x:Class="InfinityLauncher.View.Supporting.InfoBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InfinityLauncher.View.Supporting"
+        mc:Ignorable="d"
+        Title="InfoBox" Height="170" Width="370" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize">
+    <Grid>
+        <!--
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="135"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        -->
+        <Border Grid.Row="0" VerticalAlignment="Top" BorderBrush="#FFD066F0" BorderThickness="0,0,0,1">
+            <TextBlock x:Name="Caption" Text="Ошибка" Margin="10,5,0,5" VerticalAlignment="Center" FontFamily="Arial" FontWeight="Normal" FontSize="14"/>
+        </Border>
+        <TextBlock x:Name="Message" Margin="10,0,10,0" VerticalAlignment="Center" FontFamily="Arial" FontWeight="Normal" FontSize="14" Height="98"><Run Language="ru-ru" Text="Сообщение"/></TextBlock>
+        <Border VerticalAlignment="Bottom" Grid.Row="2" BorderBrush="LightGray" BorderThickness="0,1,0,0">
+            <Button HorizontalAlignment="Right" Height="20" Width="60" Margin="5,10,5,5" Content="Ок" Foreground="White" Background="#FFD066F0" BorderThickness="0" Click="CloseButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Border>
+    </Grid>
+</Window>
