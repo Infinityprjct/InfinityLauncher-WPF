@@ -1,4 +1,6 @@
-﻿using InfinityLauncher.Types;
+﻿using InfinityLauncher.Model.Services.Requests;
+using InfinityLauncher.Types;
+using InfinityLauncher.Types.Launcher;
 using InfinityLauncher.ViewModel.Login;
 using System;
 using System.Collections.Generic;
@@ -9,16 +11,27 @@ using System.Threading.Tasks;
 
 namespace InfinityLauncher.Model.Main
 {
-    public interface IMainModel
+    public interface ILauncherModel
     {
+        LauncherConfiguration LauncherConfig { get; set; }
+        DownloadManager DownloadManager { get; set; }
         Account account { get; set; }
         Server currentServer { get; set; }
         ObservableCollection<Server> servers { get; set; }
         Server GetServer(string serverName);
-        void InitializeServers(MainVM _vm);
+        void InitializeServers(LauncherVM _vm);
+        event EventHandler<LauncherEventArgs> LauncherConfigUpdated;
         event EventHandler<AccountEventArgs> AccountUpdated;
-        event EventHandler<ServerEventArgs> ServerUpdated;
-        
+        event EventHandler<ServerEventArgs> ServerUpdated;        
+    }
+
+    public class LauncherEventArgs : EventArgs
+    {
+        public LauncherConfiguration launcherConfig { get; set; }
+        public LauncherEventArgs(LauncherConfiguration _config)
+        {
+            launcherConfig = _config;
+        }
     }
 
     public class AccountEventArgs : EventArgs

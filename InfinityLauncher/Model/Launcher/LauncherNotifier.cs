@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InfinityLauncher.Model.Main
 {
-    public class MainNotifier : INotifyPropertyChanged
+    public class LauncherNotifier : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 

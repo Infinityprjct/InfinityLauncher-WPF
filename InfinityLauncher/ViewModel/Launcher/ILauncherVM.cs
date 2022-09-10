@@ -1,4 +1,6 @@
-﻿using InfinityLauncher.Types;
+﻿using InfinityLauncher.Model.Services.Requests;
+using InfinityLauncher.Types;
+using InfinityLauncher.Types.Launcher;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,8 +11,10 @@ using System.Windows.Controls;
 
 namespace InfinityLauncher.ViewModel.Main
 {
-    public interface IMainVM : INotifyPropertyChanged
+    public interface ILauncherVM : INotifyPropertyChanged
     {
+        LauncherConfiguration LauncherConfig { get; }
+        DownloadManager DownloadManager { get; }
         Account Account { get; }
         Page CurrentPage { get; set; }
         Server СurrentServer { get; set; }

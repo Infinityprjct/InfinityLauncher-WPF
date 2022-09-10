@@ -2,6 +2,7 @@
 using InfinityLauncher.Model.Main;
 using InfinityLauncher.Model.Services.Requests;
 using InfinityLauncher.Types;
+using InfinityLauncher.Types.Launcher;
 using InfinityLauncher.View.Pages;
 using InfinityLauncher.ViewModel.Main;
 using InfinityLauncher.ViewModel.Main.Commands;
@@ -18,15 +19,22 @@ using System.Windows.Input;
 
 namespace InfinityLauncher.ViewModel.Login
 {
-    public class MainVM : MainNotifier,IMainVM
+    public class LauncherVM : LauncherNotifier,ILauncherVM
     {
+
         private Page _currentPage;
-        private readonly IMainModel _model;
+        private readonly ILauncherModel _model;
         private readonly ICommand _changeServerCommand;
         private readonly ICommand _showAccountPageCommand;
         private readonly ICommand _launchGameCommand;
+        private readonly ICommand _launchAsync;
 
         // ViewModel - Model variables  
+        public LauncherConfiguration LauncherConfig
+        {
+            get { return _model.LauncherConfig; }
+        }
+        public DownloadManager DownloadManager { get { return _model.DownloadManager; } }
         public ObservableCollection<Server> Servers
         { 
             get { return _model.servers; } 
@@ -76,21 +84,33 @@ namespace InfinityLauncher.ViewModel.Login
             }
         }
 
+        public ICommand LaunchAsync
+        {
+            get
+            {
+                return _launchAsync;
+            }
+        }
+
         /// <summary>
         /// Initializing Main ViewModel class. Here we setting up delegates with model updating events, commands and set up default current page
         /// to first server
         /// </summary>
-        public MainVM(IMainModel mainModel)
+        public LauncherVM(ILauncherModel mainModel)
         {
+            
             _model = mainModel;
             _model.AccountUpdated += model_accountUpdated;
             _model.ServerUpdated += model_serverUpdated;
             _changeServerCommand = new ChangeServerCommand(this);
             _showAccountPageCommand = new ShowAccountPageCommand(this);
             _launchGameCommand = new LaunchGameCommand(this);
+            _launchAsync = new LaunchGameAsync(this);
             
+            
+
             // Initialize default page
-            _currentPage = new ExtraAnarchyPage(this);
+            _currentPage = new AdventureServerPage(this);
 
             InitializeServers();
         }

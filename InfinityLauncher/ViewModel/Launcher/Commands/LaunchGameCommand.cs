@@ -1,9 +1,15 @@
-﻿using System;
+﻿using InfinityLauncher.Model.Services.Requests;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -12,9 +18,9 @@ namespace InfinityLauncher.ViewModel.Main.Commands
 {
     internal class LaunchGameCommand : ICommand
     {
-        private IMainVM _vm;
+        private ILauncherVM _vm;
 
-        public LaunchGameCommand(IMainVM viewModel)
+        public LaunchGameCommand(ILauncherVM viewModel)
         {
             _vm = viewModel;
             _vm.PropertyChanged += vm_PropertyChanged;
@@ -34,7 +40,7 @@ namespace InfinityLauncher.ViewModel.Main.Commands
 
         public event EventHandler CanExecuteChanged = delegate { };
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
             MessageBox.Show("sTArtting minecraft");
             String libs = "C:\\Users\\Feedok\\Desktop\\Infinity\\Authlib Patching\\clientMC\\client\\1.16.5\\libraries";
@@ -46,7 +52,10 @@ namespace InfinityLauncher.ViewModel.Main.Commands
                 Arguments = @"-Djava.library.path=C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/libraries/natives -cp ""C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/libraries/*"" net.minecraft.client.main.Main --username Steve --version 1.16.5 --gameDir C:\Users\Feedok\Desktop\Infinity\Authlib\clientMC\client\T --assetsDir C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/assets --assetIndex 1.16 --uuid f82fde1a6cfc497fa6df0c67d66ca002 --accessToken 2ca41fec1f154863936c35d27ac3b362 --userType mojang"
                 //Arguments = @"java -Djava.library.path=C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/libraries/natives -cp ""C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/libraries/*"" net.minecraft.client.main.Main --username %username% --version 1.16.5 --gameDir . --assetsDir C:/Users/Feedok/Desktop/Infinity/Authlib/clientMC/client/1.16.5/assets --assetIndex 1.16 --uuid %uuid% --accessToken %accessToken% --userType mojang"
             };
-            Process.Start(minecraft);
+            //Process.Start(minecraft);
+            await _vm.DownloadManager.StartDownloadAsync(parameter.ToString(), _vm.LauncherConfig.LauncherFolder);
+
         }
+
     }
 }

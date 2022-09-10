@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "InfinityLauncher": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ServerIP": "https://127.0.0.1/"
+      }
+    }
+  }
+}

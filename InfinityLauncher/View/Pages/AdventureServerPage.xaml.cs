@@ -20,9 +20,9 @@ namespace InfinityLauncher.View.Pages
     /// <summary>
     /// Логика взаимодействия для TestPage1.xaml
     /// </summary>
-    public partial class ExtraAnarchyPage : Page
+    public partial class AdventureServerPage : Page
     {
-        public ExtraAnarchyPage(MainVM _vm)
+        public AdventureServerPage(LauncherVM _vm)
         {
             InitializeComponent();
             DataContext = _vm;

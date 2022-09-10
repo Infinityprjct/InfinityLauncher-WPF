@@ -1,5 +1,6 @@
 ﻿using InfinityLauncher.Model.Services.Requests;
 using InfinityLauncher.Types;
+using InfinityLauncher.Types.Launcher;
 using InfinityLauncher.View.Pages;
 using InfinityLauncher.ViewModel.Login;
 using Newtonsoft.Json.Linq;
@@ -14,11 +15,14 @@ using System.Windows.Controls;
 
 namespace InfinityLauncher.Model.Main
 {
-    public class MainModel : IMainModel
+    public class LauncherModel : ILauncherModel
     {
+        public LauncherConfiguration LauncherConfig { get; set; }
+        public DownloadManager DownloadManager { get; set; }
         public Account account { get; set; }
         public Server currentServer { get; set; }
         public ObservableCollection<Server> servers { get; set; }
+        public event EventHandler<LauncherEventArgs> LauncherConfigUpdated;
         public event EventHandler<AccountEventArgs> AccountUpdated;
         public event EventHandler<ServerEventArgs> ServerUpdated;
 
@@ -37,9 +41,15 @@ namespace InfinityLauncher.Model.Main
         //    }
         //}
 
-        public MainModel()
+        public LauncherModel()
         {
+            LauncherConfig = new LauncherConfiguration();
+            DownloadManager = new DownloadManager();
             servers = new ObservableCollection<Server>();
+        }
+
+        public void InitializeLauncher()
+        {
         }
 
         /// <summary>
@@ -47,9 +57,9 @@ namespace InfinityLauncher.Model.Main
         /// InitializeServers() method generates servers list
         /// <see cref="servers"/>
         /// </summary>
-        public void InitializeServers(MainVM _vm)
+        public void InitializeServers(LauncherVM _vm)
         {
-            Server ExtraAnarchyServer = new Server("ExtraAnarchy","127.0.0.1", null, new ExtraAnarchyPage(_vm));
+            Server ExtraAnarchyServer = new Server("ExtraAnarchy","127.0.0.1", null, new AdventureServerPage(_vm));
             servers.Add(ExtraAnarchyServer);
 
         }

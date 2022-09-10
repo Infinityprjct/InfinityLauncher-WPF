@@ -32,8 +32,8 @@ namespace InfinityLauncher.View
         public LauncherMain()
         {
             InitializeComponent();
-            MainModel mainModel = new MainModel();
-            DataContext = new MainVM(mainModel);
+            LauncherModel mainModel = new LauncherModel();
+            DataContext = new LauncherVM(mainModel);
         }
 
         private void Main_DragAndMove(object sender, MouseButtonEventArgs e)

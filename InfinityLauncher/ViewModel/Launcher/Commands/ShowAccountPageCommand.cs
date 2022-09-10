@@ -1,19 +1,22 @@
-﻿using System;
+﻿using InfinityLauncher.View.Pages;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace InfinityLauncher.ViewModel.Main.Commands
 {
-    internal class ChangeServerCommand : ICommand
+    internal class ShowAccountPageCommand : ICommand
     {
-        private IMainVM _vm;
+        private ILauncherVM _vm;
+        private Page accountPage = new AccountPage();
 
-        public ChangeServerCommand(IMainVM viewModel)
+        public ShowAccountPageCommand(ILauncherVM viewModel)
         {
             _vm = viewModel;
             _vm.PropertyChanged += vm_PropertyChanged;
@@ -34,7 +37,7 @@ namespace InfinityLauncher.ViewModel.Main.Commands
 
         public void Execute(object parameter)
         {
-            _vm.СhangeCurrentServer(parameter.ToString());
+            _vm.CurrentPage = accountPage;
         }
     }
 }
