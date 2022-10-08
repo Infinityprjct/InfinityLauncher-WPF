@@ -8,99 +8,7 @@
       d:DesignHeight="600" d:DesignWidth="1080"
       Title="TestPage1" Background="Black" Margin="0,0,0,10">
     <Page.Resources>
-        <ControlTemplate x:Key="PlayButton" TargetType="{x:Type ButtonBase}">
-
-            <!--Background #7d49d3-->
-            <Border x:Name="Border" Background="#FFBE6DBF" BorderBrush="Red" 
-                BorderThickness="0" SnapsToDevicePixels="true" Width="300" Height="60" CornerRadius="23">
-                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="Button.IsDefaulted" Value="true">
-                    <Setter Property="BorderBrush" TargetName="Border" Value="White"/>
-                </Trigger>
-                <!-- Mouse Over animation -->
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsMouseOver" Value="True" />
-                    </MultiTrigger.Conditions>
-                    <MultiTrigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="Background.Color" To="#6236aa" />
-
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </MultiTrigger.EnterActions>
-                    <MultiTrigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard FillBehavior="Stop">
-                                <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="Background.Color" To="#7d49d3" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </MultiTrigger.ExitActions>
-                </MultiTrigger>
-                <!-- Button pressed animation -->
-                <EventTrigger RoutedEvent="PreviewMouseDown">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="Background.Color" To="#522c8f" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="PreviewMouseUp">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="Background.Color" To="#7d49d3" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-
-        <ControlTemplate x:Key="ServerSettingsButton" TargetType="{x:Type ButtonBase}">
-
-            <Border x:Name="Border" Background="Transparent" BorderBrush="White" TextBlock.Foreground="White"
-                BorderThickness="3" SnapsToDevicePixels="true" Width="300" Height="45" CornerRadius="15">
-                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="Button.IsDefaulted" Value="true">
-                    <Setter Property="BorderBrush" TargetName="Border" Value="White"/>
-                </Trigger>
-                <!-- Mouse Over animation -->
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsMouseOver" Value="True" />
-                    </MultiTrigger.Conditions>
-                    <MultiTrigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="Background.Color" To="White" />
-                                <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="Black" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </MultiTrigger.EnterActions>
-                    <MultiTrigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard FillBehavior="Stop">
-                                <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="Background.Color" To="Transparent" />
-                                <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="White" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </MultiTrigger.ExitActions>
-                </MultiTrigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
+        <ResourceDictionary Source="/View/Sources/Styles/Buttons.xaml"/>
     </Page.Resources>
     <Grid Margin="0,0,0,-12">
         <!--
@@ -132,10 +40,22 @@
                 <StackPanel VerticalAlignment="Center" Margin="20,0,0,0">
                     <TextBlock FontFamily="Bebas Neue Cyrillic" FontSize="90" Text="ADVENTURE" Foreground="White"></TextBlock>
                     <StackPanel Orientation="Vertical">
-                        <Button Template="{DynamicResource PlayButton}" HorizontalAlignment="Left" FontFamily="Bebas Neue Cyrillic" FontStyle="Normal" Click="Button_Click" 
-                                Content="⏵ИГРАТЬ" FontSize="24" Foreground="White" Margin="0,0,10,10" Command="{Binding LaunchAsync}" CommandParameter="Adventure"/>
-                        <Button Template="{DynamicResource ServerSettingsButton}" HorizontalAlignment="Left" FontFamily="Bebas Neue Cyrillic" 
-                                Content="Настройки" Foreground="White" FontSize="14"></Button>
+                        <Button Template="{StaticResource VioletButton}" Width="300" Height="60" HorizontalAlignment="Left" FontFamily="Bebas Neue Cyrillic" FontStyle="Normal" Click="Button_Click" Content="⏵ИГРАТЬ" FontSize="24" Foreground="White" Margin="0,0,10,10"
+                                Command="{Binding LaunchGameCommand}" CommandParameter="Adventure">
+                            <Button.Style>
+                                <Style>
+                                    <Setter Property="Border.CornerRadius" Value="23"/>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Template="{StaticResource WhiteButton}" Width="300" Height="45" HorizontalAlignment="Left" FontFamily="Bebas Neue Cyrillic" 
+                                Content="Настройки" Foreground="White" FontSize="14">
+                            <Button.Style>
+                                <Style>
+                                    <Setter Property="Border.CornerRadius" Value="15"/>
+                                </Style>
+                            </Button.Style>
+                        </Button>
                     </StackPanel>
                 </StackPanel>
             </Grid>

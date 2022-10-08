@@ -8,77 +8,21 @@
         mc:Ignorable="d"
         Title="LauncherMain" Height="660" Width="1080" Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Window.Resources>
-        <ControlTemplate x:Key="AccountButton" TargetType="Button">
-            <Grid x:Name="Btn"  Height="50" Width="50">
-                <Border>
-                    <Image x:Name="AccImg" Source="/View/Sources/Icons/UserUnactive.png"/>
-                </Border>
-            </Grid>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="AccImg" Property="Source" Value="/View/Sources/Icons/UserActive.png"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <ControlTemplate x:Key="ServerButton" TargetType="Button">
-            <Grid Name="Btn" Height="50" Width="50">
-                <Border CornerRadius="20" Panel.ZIndex="1">
-                    <Image Source="{DynamicResource ResourceKey=Img}"/>
-                </Border>
-                <Border x:Name="MouseOverBorder" Background="Gray" CornerRadius="30">
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Setter Property="Opacity" Value="0"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=Btn}" Value="True">
-                                    <Setter Property="Opacity" Value="0.2"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                </Border>
-                <Border x:Name="IsSelectedBorder" Background="#FFBE6DBF" CornerRadius="30">
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Setter Property="Opacity" Value="0"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource
-                                    Mode=FindAncestor,
-                                    AncestorType={x:Type Button}}, 
-                                    Path=IsFocused}" Value="True">
-                                    <Setter Property="Opacity" Value="1"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                </Border>
-                <Border x:Name="IsSelectedBorder2" Background="Transparent">
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Setter Property="Visibility" Value="Hidden"/>
-                            <Setter Property="BorderThickness" Value="0,3,0,0"/>
-                            <Setter Property="BorderBrush" Value="Beige"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource
-                                    Mode=FindAncestor,
-                                    AncestorType={x:Type Button}}, 
-                                    Path=IsFocused}" Value="True">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                </Border>
-            </Grid>
-        </ControlTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/View/Sources/Styles/Buttons.xaml"/>
+                <ResourceDictionary Source="/View/Sources/Styles/Elements.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid Background="#FFE0E0E0">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="55"/>
-                <RowDefinition Height="600"/>
+                <RowDefinition Height="570"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
-            <Frame Grid.ColumnSpan="20" Grid.RowSpan="20" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
+            <Frame Grid.ColumnSpan="20" Grid.RowSpan="20" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}" Navigated="Frame_Navigated"/>
             <!-- Top toolbar -->
             <Grid Grid.Row="0">
                 <!-- Background #7F000000-->
@@ -109,11 +53,12 @@
                 -->
 
             </Grid>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="299*"/>
-                    <ColumnDefinition Width="61*"/>
-                </Grid.ColumnDefinitions>
+            <Grid Grid.Row="2" Visibility="{Binding IsUpdaterVisible}">
+                    <StackPanel>
+                    <TextBlock Margin="5,0,0,0" FontFamily="Arial Black" FontSize="13" Text="{Binding UpdaterState.UpdaterState}" Foreground="LightGray"/>
+                    <TextBlock Margin="5,0,0,0"  FontFamily="Arial" FontWeight="DemiBold" Text="{Binding UpdaterState.UpdaterInformation}" FontSize="13"  Foreground="LightGray"/>
+                    <ProgressBar VerticalAlignment="Bottom" Height="10" LargeChange="5" Value="{Binding UpdaterState.UpdaterPercentage}" Background="#CD6BEB" Foreground="#E5D0F0"  IsIndeterminate="{Binding UpdaterState.UpdaterIsIndeterminate}" BorderBrush="{x:Null}" SmallChange="5"/>
+                </StackPanel>
             </Grid>
         </Grid>
     </Grid>

@@ -11,14 +11,13 @@ namespace InfinityLauncher.Model.Services.Requests
 {
     public interface IRequest
     {
-        const string URL = "http://127.0.0.1:8000";
+        public const string URL = "http://127.0.0.1:8000";
         private RestClient httpClient
         {
             get { return httpClient; }
             set { httpClient = value; }
         }
 
-        JObject Request(); 
-
+        JObject Request();
     }
 }

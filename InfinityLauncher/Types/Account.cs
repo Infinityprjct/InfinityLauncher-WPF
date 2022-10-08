@@ -1,4 +1,5 @@
 ﻿using InfinityLauncher.Model.Services.Requests;
+using InfinityLauncher.View.Supporting;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -15,47 +16,58 @@ namespace InfinityLauncher.Types
     /// </summary>
     public class Account
     {
-        //public Int64 id
-        //{
-        //    get
-        //    {
-        //        return id;
-        //    }
-        //    private set
-        //    {
-        //        id = value;
-        //    }
-        //}
         public string email;
         public string nickname;
         private int balance;
         private string uuid;
-        public string refreshToken { get; set; }
-        public string accessToken { get; set; }
+        public string refreshToken
+        { get { return Settings.Default.RefreshToken; } set { Settings.Default.RefreshToken = value; Settings.Default.Save(); } }
+        public string accessToken { get { return Settings.Default.AccessToken; } set { Settings.Default.AccessToken = value; Settings.Default.Save(); } }
 
 
         public Account(string _accessToken, string _refreshToken)
         {
-            accessToken = _accessToken;
-            refreshToken = _refreshToken;
+            UpdateAccessToken();
             RefreshAccount();
-            
         }
 
         public void RefreshAccount()
         {
-            GetAccountRequest getAccountRequest = new GetAccountRequest(accessToken);
-            JObject jsonAccount = getAccountRequest.Request();
-            MessageBox.Show(jsonAccount.ToString());
-            email = jsonAccount["email"].ToString();
-            nickname = jsonAccount["nickname"].ToString();
-            balance = ((int)jsonAccount["balance"]);
-            uuid = jsonAccount["uuid"].ToString();
+            GetAccountRequest request = new GetAccountRequest(accessToken);
+            JObject jsonAccount = request.Request();
+            if (jsonAccount["error"] != null)
+            {
+                if (jsonAccount["error"].ToString() == "Unauthorized")
+                {
+                    UpdateAccessToken();
+                    request = new GetAccountRequest(accessToken);
+                    jsonAccount = request.Request();
+                }
+            }
+            else
+            { 
+                email = jsonAccount["email"].ToString();
+                nickname = jsonAccount["nickname"].ToString();
+                balance = ((int)jsonAccount["balance"]);
+                uuid = jsonAccount["uuid"].ToString();
+            }
         }
 
-        public void UpdateRefreshToken(string _refreshToken)
+        public void UpdateAccessToken()
         {
-
+            RefreshAccessTokenRequest request = new RefreshAccessTokenRequest("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2MzY5NzI4MSwianRpIjoiYTBhMmFiYmE5NzFmNDdkYWIxZjYzNWQ0OTY1MGNmMzMiLCJ1c2VyX2lkIjoxfQ.pFWZLcv4Y4bwkjkyQ-OEBDGtLelVMiV42BKDnjBzVy8");
+            JObject token = request.Request();
+            if (token == null || token["access"] == null)
+            {
+                InfoBox exitInfo = new InfoBox("Информация", "Сессия устарела выходим");
+                exitInfo.Show();
+            }
+            else
+            {
+                this.accessToken = token["access"].ToString();
+            }
+             
+            
         }
     }
 }

@@ -22,12 +22,14 @@ namespace InfinityLauncher.ViewModel.Main.Commands
 
         public bool CanExecute(object? parameter)
         {
-            return true;
+            return !IsExecuting;
         }
 
         public async void Execute(object? parameter)
         {
+            IsExecuting = true;
             await ExecuteAsync(parameter);
+            IsExecuting = false;
         }
 
         protected abstract Task ExecuteAsync(object parameter);

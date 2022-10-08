@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="LauncherFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Program Files (x86)\Iny\Infinity Launcher</Value>
+      <Value Profile="(Default)">C:\Program Files (x86)\Spectrum Studio\Infinity Launcher</Value>
     </Setting>
     <Setting Name="AccessToken" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">sdfsdf</Value>
     </Setting>
     <Setting Name="RefreshToken" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2MzQ0NDIzOCwianRpIjoiMDAxN2Y4OTc1OTNjNDk2NWFmNWZiMTlkZDUxMWNlOWMiLCJ1c2VyX2lkIjoxfQ.jugMgOx6zUUzu9O5K5elugNWnO-gPdiEMnNBwEZHuCo</Value>
     </Setting>
   </Settings>
 </SettingsFile>

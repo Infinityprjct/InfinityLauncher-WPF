@@ -70,8 +70,10 @@ namespace InfinityLauncher.ViewModel.Login
             {
                 //LauncherMain menuView = new LauncherMain(currentAccount);
                 //menuView.Show();
-                
             }
+
+
+
         }
 
         private void model_LoginUpdated(object sender,

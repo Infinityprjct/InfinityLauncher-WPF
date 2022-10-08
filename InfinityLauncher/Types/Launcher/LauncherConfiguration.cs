@@ -10,8 +10,8 @@ namespace InfinityLauncher.Types.Launcher
 {
     public class LauncherConfiguration
     {
-        string DEFAULT_HEAD_FOLDER = @"C:\Program Files (x86)\Iny";
-        string DEFAULT_LAUNCHER_FOLDER = @"C:\Program Files (x86)\Iny\Infinity Launcher";
+        string DEFAULT_HEAD_FOLDER = @"C:\Program Files (x86)\Spectrum Studio";
+        string DEFAULT_LAUNCHER_FOLDER = @"C:\Program Files (x86)\Spectrum Studio\Infinity Launcher";
         public string LauncherFolder
         {
             get { return Settings.Default.LauncherFolder.ToString(); }

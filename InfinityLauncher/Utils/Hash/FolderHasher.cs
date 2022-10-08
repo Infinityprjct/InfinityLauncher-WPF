@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace InfinityLauncher.Utils.Hash
 {
-    public class FolderHasher
+    public static class FolderHasher
     {
         /// <summary>
         /// Recursive intendent function. Updating string of all files hashes.
@@ -41,12 +41,11 @@ namespace InfinityLauncher.Utils.Hash
         /// files in directory
         /// </summary>
         /// <param name="path"></param>
-        /// <returns>Hash string</returns>
+        /// <returns>Hash string of folder</returns>
         public static string GetFolderMD5(string path)
         {
             MD5 folderMD5 = MD5.Create();
             List<string> filesMD5 = new List<string>();
-            byte folderMD5Hash;
 
             GetMD5FromSubdirectories(path, ref filesMD5);
 

@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using InfinityLauncher.Model.Main;
+using InfinityLauncher.Model.Services;
 using InfinityLauncher.Model.Services.Requests;
 using InfinityLauncher.Types;
 using InfinityLauncher.Types.Launcher;
@@ -16,24 +17,41 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace InfinityLauncher.ViewModel.Login
 {
     public class LauncherVM : LauncherNotifier,ILauncherVM
     {
-
+        private string _isUpdaterVisible = "Hidden";
+        private UpdaterStates _updaterState;
         private Page _currentPage;
         private readonly ILauncherModel _model;
         private readonly ICommand _changeServerCommand;
         private readonly ICommand _showAccountPageCommand;
         private readonly ICommand _launchGameCommand;
-        private readonly ICommand _launchAsync;
 
         // ViewModel - Model variables  
+
         public LauncherConfiguration LauncherConfig
         {
             get { return _model.LauncherConfig; }
         }
+        public UpdateManager UpdateManager
+        {
+            get { return _model.UpdateManager; }
+        }
+        public string IsUpdaterVisible
+        {
+            get { return _isUpdaterVisible; }
+            set { _isUpdaterVisible = value; NotifyPropertyChanged("IsUpdaterVisible"); }
+        }
+        public UpdaterStates UpdaterState
+        {
+            get { return _updaterState; }
+            set { _updaterState = value; Application.Current.Dispatcher.Invoke(() => NotifyPropertyChanged("UpdaterState")); }
+        }
+
         public DownloadManager DownloadManager { get { return _model.DownloadManager; } }
         public ObservableCollection<Server> Servers
         { 
@@ -76,19 +94,12 @@ namespace InfinityLauncher.ViewModel.Login
                  return _showAccountPageCommand; 
             }
         }
+
         public ICommand LaunchGameCommand
         {
             get
             {
                 return _launchGameCommand;
-            }
-        }
-
-        public ICommand LaunchAsync
-        {
-            get
-            {
-                return _launchAsync;
             }
         }
 
@@ -98,17 +109,15 @@ namespace InfinityLauncher.ViewModel.Login
         /// </summary>
         public LauncherVM(ILauncherModel mainModel)
         {
-            
             _model = mainModel;
+            _updaterState = new UpdaterStates();
             _model.AccountUpdated += model_accountUpdated;
             _model.ServerUpdated += model_serverUpdated;
+            _model.UpdaterStatesUpdated += model_updaterStateUpdated;
             _changeServerCommand = new ChangeServerCommand(this);
             _showAccountPageCommand = new ShowAccountPageCommand(this);
-            _launchGameCommand = new LaunchGameCommand(this);
-            _launchAsync = new LaunchGameAsync(this);
+            _launchGameCommand = new LaunchGameAsyncCommand(this);
             
-            
-
             // Initialize default page
             _currentPage = new AdventureServerPage(this);
 
@@ -129,6 +138,13 @@ namespace InfinityLauncher.ViewModel.Login
             
         }
 
+        // lmao name
+        async private void model_updaterStateUpdated(object sender,
+                                          UpdaterEventArgs e)
+        {
+            UpdaterState = e.updaterStates;
+        }
+
         public void InitializeServers()
         {
             _model.InitializeServers(this);
@@ -146,6 +162,18 @@ namespace InfinityLauncher.ViewModel.Login
         {
             СurrentServer = _model.GetServer(serverName);
             CurrentPage = СurrentServer.serverPage;
+        }
+
+        public async Task ChangeUpdaterVisibility()
+        {
+            if (IsUpdaterVisible == "Hidden")
+            {
+                IsUpdaterVisible = "Visible";
+            }
+            else
+            {
+                IsUpdaterVisible = "Hidden";
+            }
         }
 
     }

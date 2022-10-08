@@ -9,59 +9,8 @@
       Title="AccountPage">
 
     <Page.Resources>
-        <ControlTemplate x:Key="UpdateSkinButton" TargetType="{x:Type ButtonBase}">
+        <ResourceDictionary Source="/View/Sources/Styles/Buttons.xaml"/>
 
-        <!--Background #7d49d3-->
-        <Border x:Name="Border" Background="#FFBE6DBF" BorderBrush="Red" 
-                BorderThickness="0" SnapsToDevicePixels="true" Width="250" Height="60" CornerRadius="23">
-            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-        </Border>
-        <ControlTemplate.Triggers>
-            <Trigger Property="Button.IsDefaulted" Value="true">
-                <Setter Property="BorderBrush" TargetName="Border" Value="White"/>
-            </Trigger>
-            <!-- Mouse Over animation -->
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsMouseOver" Value="True" />
-                </MultiTrigger.Conditions>
-                <MultiTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="Background.Color" To="#6236aa" />
-
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.EnterActions>
-                <MultiTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard FillBehavior="Stop">
-                            <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="Background.Color" To="#7d49d3" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.ExitActions>
-            </MultiTrigger>
-            <!-- Button pressed animation -->
-            <EventTrigger RoutedEvent="PreviewMouseDown">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="Background.Color" To="#522c8f" />
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-            <EventTrigger RoutedEvent="PreviewMouseUp">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <ColorAnimation Duration="0:0:0.15" Storyboard.TargetName="Border"
-                                            Storyboard.TargetProperty="Background.Color" To="#7d49d3" />
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
     </Page.Resources>
     <Grid>
         <Grid.Background>
@@ -88,7 +37,13 @@
                         <TextBlock Margin="10"  HorizontalAlignment="Center"  Text="FeedokTV" Foreground="White" FontSize="22"></TextBlock>
                         <TextBlock HorizontalAlignment="Center"  Text="FeedokTV" Foreground="White" FontSize="22"></TextBlock>
                         <TextBlock HorizontalAlignment="Center"  Text="FeedokTV" Foreground="White" FontSize="22"></TextBlock>
-                        <Button Grid.Row="1" VerticalAlignment="Bottom" Margin="0,0,0,20" Template="{StaticResource UpdateSkinButton}" Foreground="White" FontSize="15" Content="Обновить скин" FontFamily="Bebas Neue Cyrillic" FontStyle="Normal"/>
+                        <Button Grid.Row="1" Template="{StaticResource VioletButton}" Width="250" Height="60" VerticalAlignment="Bottom" Margin="0,0,0,20" Foreground="White" FontSize="15" Content="Обновить скин" FontFamily="Bebas Neue Cyrillic" FontStyle="Normal">
+                            <Button.Style>
+                                <Style>
+                                    <Setter Property="Border.CornerRadius" Value="23"/>
+                                </Style>
+                            </Button.Style>
+                        </Button>
                     </StackPanel>
                 </Grid>
             </Border>

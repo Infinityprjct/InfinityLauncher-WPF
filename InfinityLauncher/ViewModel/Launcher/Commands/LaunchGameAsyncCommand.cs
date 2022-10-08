@@ -1,4 +1,5 @@
 ﻿using InfinityLauncher.Model.Services.Requests;
+using InfinityLauncher.View.Supporting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +17,11 @@ using System.Windows.Input;
 
 namespace InfinityLauncher.ViewModel.Main.Commands
 {
-    public class LaunchGameAsync : AsyncCommandBase
+    public class LaunchGameAsyncCommand : AsyncCommandBase
     {
         private ILauncherVM _vm;
 
-        public LaunchGameAsync(ILauncherVM viewModel)
+        public LaunchGameAsyncCommand(ILauncherVM viewModel)
         {
             _vm = viewModel;
             _vm.PropertyChanged += vm_PropertyChanged;
@@ -28,8 +29,11 @@ namespace InfinityLauncher.ViewModel.Main.Commands
 
         protected override async Task ExecuteAsync(object parameter)
         {
-            MessageBox.Show("Nananan");
-            await _vm.DownloadManager.DownloadServerFolder("","");
+            await _vm.ChangeUpdaterVisibility(); 
+            await Task.Run(() => _vm.UpdateManager.UpdateServerFolders(parameter.ToString()));
+            String libs = "C:\\Users\\Feedok\\Desktop\\Infinity\\Authlib Patching\\clientMC\\client\\1.16.5\\libraries";
+            String assets = "C:\\Users\\Feedok\\Desktop\\Infinity\\Authlib Patching\\clientMC\\client\\1.16.5\\assets";
+            await _vm.ChangeUpdaterVisibility();
         }
 
         private void vm_PropertyChanged(object sender,
@@ -37,8 +41,6 @@ namespace InfinityLauncher.ViewModel.Main.Commands
         {
             
         }
-
-        
 
     }
 }

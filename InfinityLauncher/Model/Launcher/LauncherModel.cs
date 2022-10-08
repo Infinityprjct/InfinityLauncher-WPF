@@ -1,4 +1,5 @@
-﻿using InfinityLauncher.Model.Services.Requests;
+﻿using InfinityLauncher.Model.Services;
+using InfinityLauncher.Model.Services.Requests;
 using InfinityLauncher.Types;
 using InfinityLauncher.Types.Launcher;
 using InfinityLauncher.View.Pages;
@@ -18,13 +19,17 @@ namespace InfinityLauncher.Model.Main
     public class LauncherModel : ILauncherModel
     {
         public LauncherConfiguration LauncherConfig { get; set; }
+        public UpdateManager UpdateManager { get; set; }
         public DownloadManager DownloadManager { get; set; }
         public Account account { get; set; }
         public Server currentServer { get; set; }
+        public UpdaterStates updaterState { get; set; }
         public ObservableCollection<Server> servers { get; set; }
-        public event EventHandler<LauncherEventArgs> LauncherConfigUpdated;
-        public event EventHandler<AccountEventArgs> AccountUpdated;
-        public event EventHandler<ServerEventArgs> ServerUpdated;
+        public event EventHandler<LauncherEventArgs> LauncherConfigUpdated = delegate { };
+        public event EventHandler<UpdaterEventArgs> UpdaterStatesUpdated = delegate { };
+        public event EventHandler<AccountEventArgs> AccountUpdated = delegate { };
+        public event EventHandler<ServerEventArgs> ServerUpdated = delegate { };
+
 
         /// <summary>
         /// Model for main launcher part. Here we startup minecraft, show account info and setting up launcher
@@ -43,8 +48,10 @@ namespace InfinityLauncher.Model.Main
 
         public LauncherModel()
         {
+            account = new Account(Settings.Default.AccessToken, "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2MzM1NjY0NCwianRpIjoiMWM4MWIzMGJkMzJmNDQ4MWJiM2RjZTNkMjY5OTNmNGIiLCJ1c2VyX2lkIjoxfQ.9Hqb1cWR5XcoTQjujakYE5zohnEeNzP35ir9Vu3sO3Y");
             LauncherConfig = new LauncherConfiguration();
-            DownloadManager = new DownloadManager();
+            UpdateManager = new UpdateManager(this);
+            DownloadManager = new DownloadManager(this);
             servers = new ObservableCollection<Server>();
         }
 
@@ -74,6 +81,18 @@ namespace InfinityLauncher.Model.Main
         {
             return servers.FirstOrDefault(
                 server => server.Name == serverName);
+        }
+
+        public void SetUpdaterStates(UpdaterStates _updaterStates)
+        {
+            updaterState = _updaterStates;
+            UpdaterStatesUpdated(this,new UpdaterEventArgs(_updaterStates));
+        }
+
+        public void SetUpdaterPercentage(int updaterPercentage)
+        {
+            updaterState.UpdaterPercentage = updaterPercentage;
+            UpdaterStatesUpdated(this, new UpdaterEventArgs(updaterState));
         }
 
     }

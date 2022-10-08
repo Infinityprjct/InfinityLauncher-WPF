@@ -25,7 +25,7 @@ namespace InfinityLauncher {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\Iny\\Infinity Launcher")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\Spectrum Studio\\Infinity Launcher")]
         public string LauncherFolder {
             get {
                 return ((string)(this["LauncherFolder"]));
@@ -37,7 +37,7 @@ namespace InfinityLauncher {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("sdfsdf")]
         public string AccessToken {
             get {
                 return ((string)(this["AccessToken"]));
@@ -49,7 +49,9 @@ namespace InfinityLauncher {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2" +
+            "MzQ0NDIzOCwianRpIjoiMDAxN2Y4OTc1OTNjNDk2NWFmNWZiMTlkZDUxMWNlOWMiLCJ1c2VyX2lkIjox" +
+            "fQ.jugMgOx6zUUzu9O5K5elugNWnO-gPdiEMnNBwEZHuCo")]
         public string RefreshToken {
             get {
                 return ((string)(this["RefreshToken"]));
